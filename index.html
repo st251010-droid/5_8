@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音楽史の旅 - 西洋音楽の歴史</title>
+    
+    <!-- Google Fonts: Noto Serif JP for elegant typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                    },
+                    colors: {
+                        classic: {
+                            50: '#FAF8F5',  // Off-white background
+                            100: '#F0EBE1', // Light paper
+                            700: '#4A3B32', // Deep brown
+                            800: '#2C231F', // Darker brown
+                            900: '#1A1512', // Almost black
+                            gold: '#C5A059', // Elegant gold
+                            gold_light: '#DBC28D'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* カスタムCSS: タイムラインの中央線と装飾 */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 24px; /* モバイルでの線の位置 */
+            width: 2px;
+            background: #DBC28D; /* classic.gold_light */
+        }
+
+        @media (min-width: 768px) {
+            .timeline-container::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .hero-pattern {
+            background-color: #1A1512;
+            background-image: radial-gradient(#C5A059 0.5px, transparent 0.5px), radial-gradient(#C5A059 0.5px, #1A1512 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-attachment: fixed;
+        }
+
+        /* ふわっと表示させるアニメーション */
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* detailsのデフォルトの矢印を消す */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-serif bg-classic-50 text-classic-800 antialiased selection:bg-classic-gold selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-classic-50/90 backdrop-blur-md border-b border-classic-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="flex items-center space-x-2 text-classic-900 font-bold text-xl hover:text-classic-gold transition-colors">
+                    <i data-lucide="music-4" class="w-6 h-6 text-classic-gold"></i>
+                    <span>音楽史の旅</span>
+                </a>
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#ancient" class="hover:text-classic-gold transition-colors">古代・中世</a>
+                    <a href="#renaissance" class="hover:text-classic-gold transition-colors">ルネサンス</a>
+                    <a href="#baroque" class="hover:text-classic-gold transition-colors">バロック</a>
+                    <a href="#classical" class="hover:text-classic-gold transition-colors">古典派</a>
+                    <a href="#romantic" class="hover:text-classic-gold transition-colors">ロマン派</a>
+                    <a href="#modern" class="hover:text-classic-gold transition-colors">近現代</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-pattern">
+        <div class="absolute inset-0 bg-classic-900/80"></div> <!-- 暗いオーバーレイ -->
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <i data-lucide="headphones" class="w-12 h-12 text-classic-gold mx-auto mb-6"></i>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                時を超えて響く、<br>
+                <span class="text-classic-gold">音楽の歴史</span>を辿る
+            </h1>
+            <p class="text-lg md:text-xl text-classic-100 mb-10 max-w-2xl mx-auto leading-relaxed opacity-90">
+                グレゴリオ聖歌から現代のポピュラー音楽まで。人類がどのように音を紡ぎ、感情を表現してきたのか、西洋音楽史の壮大な物語へようこそ。
+            </p>
+            <a href="#ancient" class="inline-flex items-center px-8 py-3 rounded-full bg-classic-gold text-white font-semibold hover:bg-yellow-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                歴史の旅を始める
+                <i data-lucide="arrow-down" class="w-4 h-4 ml-2"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Introduction -->
+    <section class="py-16 bg-white border-b border-classic-100">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-classic-900 mb-6 flex items-center justify-center">
+                <i data-lucide="book-open" class="w-6 h-6 mr-3 text-classic-gold"></i>
+                西洋音楽史とは？
+            </h2>
+            <p class="text-classic-700 leading-relaxed text-lg">
+                私たちが普段耳にする音楽の多くは、「西洋音楽」のルール（ドレミの音階や和音など）に基づいています。このホームページでは、ヨーロッパを中心に発展してきた西洋音楽の歴史を、6つの重要な時代区分に分けて分かりやすく解説します。
+            </p>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <main class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative timeline-container">
+
+            <!-- 1. 古代・中世 -->
+            <div id="ancient" class="relative flex flex-col md:flex-row items-center mb-24 w-full">
+                <div class="hidden md:block md:w-1/2 pr-12 text-right">
+                    <img src="https://images.unsplash.com/photo-1544299933-28eb585090f7?auto=format&fit=crop&q=80&w=800" alt="中世の修道院" class="rounded-lg shadow-xl inline-block max-w-sm object-cover h-64 w-full border-4 border-white">
+                </div>
+                <!-- Timeline Dot -->
+                <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-classic-gold border-4 border-classic-50 z-10 flex items-center justify-center"></div>
+                <div class="w-full pl-16 md:pl-0 md:w-1/2 md:pl-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-classic-100 hover:shadow-md transition-shadow">
+                        <span class="text-sm font-bold text-classic-gold tracking-widest uppercase mb-2 block">5世紀 - 14世紀</span>
+                        <h3 class="text-2xl font-bold mb-4 text-classic-900">古代・中世</h3>
+                        <p class="text-classic-700 mb-4 leading-relaxed">
+                            西洋音楽のルーツは古代ギリシャに遡りますが、楽譜として記録が残るようになるのは中世のキリスト教会からです。代表的なのが、単旋律で伴奏のない<strong>「グレゴリオ聖歌」</strong>です。祈りの言葉を神に届けるための、静かで神秘的な音楽でした。
+                        </p>
+                        <div class="flex items-center text-sm text-classic-700 bg-classic-50 p-3 rounded-lg">
+                            <i data-lucide="info" class="w-4 h-4 mr-2 text-classic-gold"></i>
+                            <span>キーワード：ネウマ譜（初期の楽譜）、単旋律（モノフォニー）</span>
+                        </div>
+                        <details class="group mt-4">
+                            <summary class="flex items-center cursor-pointer text-classic-gold font-semibold hover:text-yellow-600 transition-colors bg-classic-50/50 p-2 rounded-lg hover:bg-classic-50">
+                                <i data-lucide="play-circle" class="w-5 h-5 mr-2"></i>
+                                代表曲を聴く：グレゴリオ聖歌
+                                <i data-lucide="chevron-down" class="w-4 h-4 ml-auto transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-4 bg-classic-50 p-2 rounded-lg">
+                                <iframe width="100%" height="200" src="https://www.youtube.com/embed/W-hrBhA4XkM" title="グレゴリオ聖歌" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded shadow-sm"></iframe>
+                                <p class="text-xs text-gray-500 mt-2 text-right">※YouTubeの参考音源</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. ルネサンス -->
+            <div id="renaissance" class="relative flex flex-col md:flex-row-reverse items-center mb-24 w-full">
+                <div class="hidden md:block md:w-1/2 pl-12 text-left">
+                    <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&q=80&w=800" alt="ルネサンス期の絵画" class="rounded-lg shadow-xl inline-block max-w-sm object-cover h-64 w-full border-4 border-white">
+                </div>
+                <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-classic-gold border-4 border-classic-50 z-10"></div>
+                <div class="w-full pl-16 md:pl-0 md:w-1/2 md:pr-12 text-left md:text-right">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-classic-100 hover:shadow-md transition-shadow">
+                        <span class="text-sm font-bold text-classic-gold tracking-widest uppercase mb-2 block">15世紀 - 16世紀</span>
+                        <h3 class="text-2xl font-bold mb-4 text-classic-900">ルネサンス</h3>
+                        <p class="text-classic-700 mb-4 leading-relaxed">
+                            「再生」を意味するルネサンス期。人間らしさを尊重する文化が花開き、音楽もより豊かで複雑になります。複数のメロディが同時に美しく絡み合う<strong>「多声音楽（ポリフォニー）」</strong>が完成の域に達しました。ジョスカン・デ・プレやパレストリーナなどが活躍しました。
+                        </p>
+                        <div class="flex items-center md:justify-end text-sm text-classic-700 bg-classic-50 p-3 rounded-lg">
+                            <i data-lucide="music" class="w-4 h-4 mr-2 text-classic-gold"></i>
+                            <span>代表的な作曲家：パレストリーナ、ジョスカン・デ・プレ</span>
+                        </div>
+                        <details class="group mt-4">
+                            <summary class="flex items-center md:justify-end cursor-pointer text-classic-gold font-semibold hover:text-yellow-600 transition-colors bg-classic-50/50 p-2 rounded-lg hover:bg-classic-50">
+                                <i data-lucide="play-circle" class="w-5 h-5 mr-2"></i>
+                                代表曲を聴く：パレストリーナ
+                                <i data-lucide="chevron-down" class="w-4 h-4 ml-2 transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-4 bg-classic-50 p-2 rounded-lg">
+                                <iframe width="100%" height="200" src="https://www.youtube.com/embed/BRfF7W4El60" title="パレストリーナ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded shadow-sm"></iframe>
+                                <p class="text-xs text-gray-500 mt-2 text-right">※YouTubeの参考音源</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. バロック -->
+            <div id="baroque" class="relative flex flex-col md:flex-row items-center mb-24 w-full">
+                <div class="hidden md:block md:w-1/2 pr-12 text-right">
+                    <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&q=80&w=800" alt="バロック様式のピアノ" class="rounded-lg shadow-xl inline-block max-w-sm object-cover h-64 w-full border-4 border-white">
+                </div>
+                <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-classic-gold border-4 border-classic-50 z-10"></div>
+                <div class="w-full pl-16 md:pl-0 md:w-1/2 md:pl-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-classic-100 hover:shadow-md transition-shadow">
+                        <span class="text-sm font-bold text-classic-gold tracking-widest uppercase mb-2 block">17世紀 - 18世紀半ば</span>
+                        <h3 class="text-2xl font-bold mb-4 text-classic-900">バロック</h3>
+                        <p class="text-classic-700 mb-4 leading-relaxed">
+                            「いびつな真珠」を語源とするバロック時代。王侯貴族の宮廷を中心に、華やかで劇的、かつ装飾的な音楽が好まれました。オペラが誕生し、バイオリンなどの楽器製作技術も向上。<strong>「音楽の父」と呼ばれるバッハ</strong>が活躍し、近代的な和音の基礎が作られました。
+                        </p>
+                        <div class="flex items-center text-sm text-classic-700 bg-classic-50 p-3 rounded-lg">
+                            <i data-lucide="mic-2" class="w-4 h-4 mr-2 text-classic-gold"></i>
+                            <span>代表的な作曲家：J.S.バッハ、ヘンデル、ヴィヴァルディ</span>
+                        </div>
+                        <details class="group mt-4">
+                            <summary class="flex items-center cursor-pointer text-classic-gold font-semibold hover:text-yellow-600 transition-colors bg-classic-50/50 p-2 rounded-lg hover:bg-classic-50">
+                                <i data-lucide="play-circle" class="w-5 h-5 mr-2"></i>
+                                代表曲を聴く：バッハ「G線上のアリア」
+                                <i data-lucide="chevron-down" class="w-4 h-4 ml-auto transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-4 bg-classic-50 p-2 rounded-lg">
+                                <iframe width="100%" height="200" src="https://www.youtube.com/embed/GMkmQlfOJDk" title="バッハ G線上のアリア" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded shadow-sm"></iframe>
+                                <p class="text-xs text-gray-500 mt-2 text-right">※YouTubeの参考音源</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. 古典派 -->
+            <div id="classical" class="relative flex flex-col md:flex-row-reverse items-center mb-24 w-full">
+                <div class="hidden md:block md:w-1/2 pl-12 text-left">
+                    <img src="https://images.unsplash.com/photo-1620311516086-59eb1b7e4f3a?auto=format&fit=crop&q=80&w=800" alt="オーケストラ" class="rounded-lg shadow-xl inline-block max-w-sm object-cover h-64 w-full border-4 border-white">
+                </div>
+                <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-classic-gold border-4 border-classic-50 z-10"></div>
+                <div class="w-full pl-16 md:pl-0 md:w-1/2 md:pr-12 text-left md:text-right">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-classic-100 hover:shadow-md transition-shadow">
+                        <span class="text-sm font-bold text-classic-gold tracking-widest uppercase mb-2 block">18世紀後半 - 19世紀初頭</span>
+                        <h3 class="text-2xl font-bold mb-4 text-classic-900">古典派</h3>
+                        <p class="text-classic-700 mb-4 leading-relaxed">
+                            ウィーンを中心に発展した、形式美と調和を重んじる時代です。ソナタ形式という曲の構成ルールが確立され、交響曲や弦楽四重奏曲が数多く作られました。複雑すぎず、誰が聴いても美しいと感じられるような、洗練されたメロディが特徴です。
+                        </p>
+                        <div class="flex items-center md:justify-end text-sm text-classic-700 bg-classic-50 p-3 rounded-lg">
+                            <i data-lucide="crown" class="w-4 h-4 mr-2 text-classic-gold"></i>
+                            <span>代表的な作曲家：モーツァルト、ハイドン、ベートーヴェン</span>
+                        </div>
+                        <details class="group mt-4">
+                            <summary class="flex items-center md:justify-end cursor-pointer text-classic-gold font-semibold hover:text-yellow-600 transition-colors bg-classic-50/50 p-2 rounded-lg hover:bg-classic-50">
+                                <i data-lucide="play-circle" class="w-5 h-5 mr-2"></i>
+                                代表曲を聴く：モーツァルト
+                                <i data-lucide="chevron-down" class="w-4 h-4 ml-2 transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-4 bg-classic-50 p-2 rounded-lg">
+                                <iframe width="100%" height="200" src="https://www.youtube.com/embed/nPbxTrPwqGE" title="モーツァルト" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded shadow-sm"></iframe>
+                                <p class="text-xs text-gray-500 mt-2 text-right">※YouTubeの参考音源</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. ロマン派 -->
+            <div id="romantic" class="relative flex flex-col md:flex-row items-center mb-24 w-full">
+                <div class="hidden md:block md:w-1/2 pr-12 text-right">
+                    <img src="https://images.unsplash.com/photo-1550686419-a1b7e73f848c?auto=format&fit=crop&q=80&w=800" alt="ピアノの鍵盤" class="rounded-lg shadow-xl inline-block max-w-sm object-cover h-64 w-full border-4 border-white">
+                </div>
+                <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-classic-gold border-4 border-classic-50 z-10"></div>
+                <div class="w-full pl-16 md:pl-0 md:w-1/2 md:pl-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-classic-100 hover:shadow-md transition-shadow">
+                        <span class="text-sm font-bold text-classic-gold tracking-widest uppercase mb-2 block">19世紀</span>
+                        <h3 class="text-2xl font-bold mb-4 text-classic-900">ロマン派</h3>
+                        <p class="text-classic-700 mb-4 leading-relaxed">
+                            形式にとらわれず、個人の感情や夢、自然への憧れなどを自由に表現するようになった時代です。産業革命による楽器の改良（特にピアノ）が進み、オーケストラの規模も拡大しました。「ピアノの詩人」ショパンなど、超絶技巧を持つスター音楽家も登場します。
+                        </p>
+                        <div class="flex items-center text-sm text-classic-700 bg-classic-50 p-3 rounded-lg">
+                            <i data-lucide="heart" class="w-4 h-4 mr-2 text-classic-gold"></i>
+                            <span>代表的な作曲家：ショパン、リスト、ワーグナー、チャイコフスキー</span>
+                        </div>
+                        <details class="group mt-4">
+                            <summary class="flex items-center cursor-pointer text-classic-gold font-semibold hover:text-yellow-600 transition-colors bg-classic-50/50 p-2 rounded-lg hover:bg-classic-50">
+                                <i data-lucide="play-circle" class="w-5 h-5 mr-2"></i>
+                                代表曲を聴く：ショパン「ノクターン第2番」
+                                <i data-lucide="chevron-down" class="w-4 h-4 ml-auto transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-4 bg-classic-50 p-2 rounded-lg">
+                                <iframe width="100%" height="200" src="https://www.youtube.com/embed/9E6b3swbnWg" title="ショパン ノクターン" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded shadow-sm"></iframe>
+                                <p class="text-xs text-gray-500 mt-2 text-right">※YouTubeの参考音源</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. 近現代 -->
+            <div id="modern" class="relative flex flex-col md:flex-row-reverse items-center mb-10 w-full">
+                <div class="hidden md:block md:w-1/2 pl-12 text-left">
+                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80&w=800" alt="現代のミキサー" class="rounded-lg shadow-xl inline-block max-w-sm object-cover h-64 w-full border-4 border-white">
+                </div>
+                <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-classic-gold border-4 border-classic-50 z-10"></div>
+                <div class="w-full pl-16 md:pl-0 md:w-1/2 md:pr-12 text-left md:text-right">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-classic-100 hover:shadow-md transition-shadow">
+                        <span class="text-sm font-bold text-classic-gold tracking-widest uppercase mb-2 block">20世紀 - 現在</span>
+                        <h3 class="text-2xl font-bold mb-4 text-classic-900">近現代</h3>
+                        <p class="text-classic-700 mb-4 leading-relaxed">
+                            従来のルールを打ち破る革新的な時代です。調性（ドレミの基準）を持たない無調音楽、印象派の曖昧な響き、ジャズや民族音楽の影響を受けたリズムなどが生まれました。その後、録音技術や電子楽器の発明により、音楽はポピュラー音楽へと裾野を広げ、劇的な進化を続けています。
+                        </p>
+                        <div class="flex items-center md:justify-end text-sm text-classic-700 bg-classic-50 p-3 rounded-lg">
+                            <i data-lucide="radio" class="w-4 h-4 mr-2 text-classic-gold"></i>
+                            <span>代表的な作曲家：ドビュッシー、ストラヴィンスキー、ラヴェル</span>
+                        </div>
+                        <details class="group mt-4">
+                            <summary class="flex items-center md:justify-end cursor-pointer text-classic-gold font-semibold hover:text-yellow-600 transition-colors bg-classic-50/50 p-2 rounded-lg hover:bg-classic-50">
+                                <i data-lucide="play-circle" class="w-5 h-5 mr-2"></i>
+                                代表曲を聴く：ドビュッシー「月の光」
+                                <i data-lucide="chevron-down" class="w-4 h-4 ml-2 transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-4 bg-classic-50 p-2 rounded-lg">
+                                <iframe width="100%" height="200" src="https://www.youtube.com/embed/CvFH_6DNRCY" title="ドビュッシー 月の光" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded shadow-sm"></iframe>
+                                <p class="text-xs text-gray-500 mt-2 text-right">※YouTubeの参考音源</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Call to action / Quote -->
+    <section class="bg-classic-900 text-classic-100 py-16 mt-12 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <i data-lucide="quote" class="w-10 h-10 text-classic-gold mx-auto mb-6 opacity-50"></i>
+            <p class="text-2xl md:text-3xl font-light italic mb-8 leading-relaxed">
+                「音楽は、言葉が語れず、しかも沈黙しきれないものを表現する。」
+            </p>
+            <p class="text-classic-gold">ヴィクトル・ユーゴー（フランスの詩人・小説家）</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A1512] text-classic-100 py-10 border-t border-classic-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="flex justify-center items-center space-x-2 mb-6">
+                <i data-lucide="music-4" class="w-5 h-5 text-classic-gold"></i>
+                <span class="font-bold text-lg tracking-wide">音楽史の旅</span>
+            </div>
+            <p class="text-sm text-gray-500 mb-4">
+                西洋音楽の歴史を学ぶための教育用デモサイトです。
+            </p>
+            <p class="text-sm text-gray-600">
+                &copy; 2026 History of Music Education. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
